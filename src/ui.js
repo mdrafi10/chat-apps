@@ -32,7 +32,7 @@ class ChatUI {
          <img src=${data.img}
           class="w-6 h-6 object-cover rounded-full overflow-hidden"/>
         </div>
-        <div class="bg-${data.rndom.gColor.replace(
+        <div class="bg-${data.rndom?.gColor.replace(
           "text-",
           ""
         )} w-7 h-7 object-cover rounded-full overflow-hidden flex items-center capitalize justify-center font-semibold ${
@@ -45,7 +45,7 @@ class ChatUI {
        <div class="flex items-center justify-between">
         <span class="font-bold mr-2 capitalize  ${
           data.rndom?.userId === data.rndom?.userId
-            ? data.rndom.gColor
+            ? data.rndom?.gColor
             : "text-red-500"
         }">${data.username}</span>
         <div class="time  text-xs  ${
