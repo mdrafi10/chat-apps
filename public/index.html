@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <script
+      src="https://kit.fontawesome.com/8e2ac3b7d7.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body class="bg-black">
+    <!-- Login html start -->
+    <div
+      class="
+        login-page
+        text-gray-300
+        bg-black
+        hidden
+        h-screen
+        flex
+        justify-center
+        items-center
+        flex-col
+      "
+    >
+      <h1 class="text-center text-xl font-semibold mb-3">
+        Get start your Group Chats
+      </h1>
+      <div
+        id="modal-login"
+        class="modal modal2 w-400 shadow-2xl rounded p-6 bg-srci relative"
+      >
+        <div
+          class="
+            login-message
+            absolute
+            z-30
+            left-0
+            text-center
+            bottom-24
+            w-full
+            bg-pink-700
+            hidden
+          "
+        >
+          The email is invalid
+        </div>
+        <div class="modal-content">
+          <h4 class="text-3xl text-center">Login</h4>
+          <br />
+          <form id="login-form">
+            <div class="input-field">
+              <input
+                type="email"
+                id="login-email"
+                autocomplete="off"
+                placeholder="Email address"
+                class="
+                  w-full
+                  bg-srci
+                  border-b-2 border-gray-400
+                  py-2
+                  outline-none
+                  mt-7
+                "
+                required
+              />
+            </div>
+            <div class="input-field">
+              <input
+                type="password"
+                id="login-password"
+                class="
+                  w-full
+                  bg-srci
+                  border-b-2 border-gray-400
+                  py-2
+                  outline-none
+                  mt-7
+                "
+                placeholder="Your password"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <button
+              class="
+                btn
+                w-full
+                py-2
+                px-4
+                mt-7
+                mb-4
+                font-semibold
+                rounded
+                shadow-md
+                text-white
+                bg-blue-600
+                hover:bg-blue-700
+              "
+            >
+              Login
+            </button>
+          </form>
+          <div class="text-center mb-4">
+            <button
+              class="
+                mbtn
+                btn
+                w-3/5
+                py-2
+                px-4
+                mt-7
+                font-semibold
+                rounded
+                shadow-md
+                text-white
+                bg-green-500
+                hover:bg-green-700
+              "
+              id="create-accont"
+            >
+              Create New Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Login html end -->
+
+    <!-- signup html start -->
+    <div
+      class="
+        signup-page
+        text-gray-300
+        bg-black
+        hidden
+        h-screen
+        flex
+        justify-center
+        items-center
+        flex-col
+      "
+    >
+      <div
+        id="modal-signup"
+        class="modal modal2 w-400 shadow-2xl rounded p-6 bg-srci"
+      >
+        <div class="modal-content">
+          <h4 class="text-3xl text-center">Sign Up</h4>
+          <br />
+          <form id="signup-form">
+            <div class="input-field">
+              <input
+                type="text"
+                id="signup-text"
+                autocomplete="off"
+                placeholder="Full Name"
+                class="
+                  w-full
+                  bg-srci
+                  border-b-2 border-gray-400
+                  py-2
+                  outline-none
+                  mt-7
+                "
+                required
+              />
+            </div>
+            <div class="input-field">
+              <input
+                type="email"
+                id="signup-email"
+                autocomplete="off"
+                placeholder="Email address"
+                class="
+                  w-full
+                  bg-srci
+                  border-b-2 border-gray-400
+                  py-2
+                  outline-none
+                  mt-7
+                "
+                required
+              />
+            </div>
+            <div class="input-field">
+              <input
+                type="password"
+                id="signup-password"
+                class="
+                  w-full
+                  bg-srci
+                  border-b-2 border-gray-400
+                  py-2
+                  outline-none
+                  mt-7
+                "
+                placeholder="Choose password"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <button
+              class="
+                btn
+                w-full
+                py-2
+                px-4
+                mt-7
+                mb-4
+                font-semibold
+                rounded
+                shadow-md
+                text-white
+                bg-green-600
+                hover:bg-green-700
+              "
+            >
+              Sign up
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <span>Allready have an account ?</span>
+            <button
+              class="
+                btn
+                py-2
+                font-semibold
+                rounded
+                shadow-md
+                text-blue-500
+                hover:text-blue-700
+              "
+              id="login"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- signup html end -->
+
+    <!-- chat html start-->
+    <div class="chatApp max-w-5xl mx-auto h-screen pt-32 hidden relative">
+      <div
+        class="main-chat-wrapper flex h-3/4 rounded-md overflow-hidden relative"
+      >
+        <!-- popup form start -->
+        <div
+          id="popupForm"
+          class="
+            hidden
+            bg-grayB-900
+            rounded-md
+            shadow-2xl
+            py-2
+            px-4
+            absolute
+            z-40
+            top-1/2
+            left-1/2
+            transform
+            -translate-x-1/2 -translate-y-1/2
+          "
+        >
+          <form class="new-chatroom">
+            <h5 class="text-blue-500 font-medium text-xs mb-2">Group Name</h5>
+            <input
+              type="text"
+              id="nchatroom"
+              autocomplete="off"
+              class="
+                bg-grayB-900
+                border-b-2 border-blue-400
+                opacity-40
+                py-2
+                mb-3
+                block
+                px-4
+                text-gray-100
+                outline-none
+              "
+            />
+            <div class="btn-2 flex justify-end">
+              <button
+                class="
+                  cancel
+                  py-2
+                  px-4
+                  font-semibold
+                  text-blue-600
+                  hover:bg-grayB-800 hover:text-gray-200
+                "
+              >
+                Cancel
+              </button>
+              <button
+                class="
+                  btn
+                  py-2
+                  px-4
+                  font-semibold
+                  text-blue-600
+                  hover:bg-grayB-800 hover:text-gray-200
+                "
+                type="submit"
+                value="submit"
+              >
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+        <div
+          class="
+            hidden
+            bg bg-grayC-900
+            opacity-50
+            w-full
+            h-full
+            z-20
+            text-gray-200
+            absolute
+            top-0
+            left-0
+          "
+        ></div>
+        <!-- popup form end -->
+        <div class="left-side-room bg-tel1 flex-initial">
+          <h1
+            class="
+              text-grayW-300
+              font-bold
+              border-b-2
+              shadow-md
+              border-gray-600
+              py-3
+              px-6
+              border-opacity-50
+            "
+          >
+            Builder Rafi
+          </h1>
+          <div class="p-3 w-full h-full">
+            <!-- create new chatroom -->
+            <div class="cahroom-main">
+              <div
+                class="
+                  pop
+                  text-gray-300
+                  duration-200
+                  hover:bg-srci
+                  text-lg
+                  font-semibold
+                  mb-3
+                "
+              >
+                <h1 class="cursor-pointer p-2">
+                  <i class="fas fa-user-friends mr-2"></i> New Group
+                </h1>
+              </div>
+              <!-- popUp Form -->
+            </div>
+
+            <!-- buttons for chatrooms -->
+            <div class="button-rooms w-full h-3/4">
+              <div class="p-2 text-gray-200 text-lg font-semibold">
+                <span class="mr-2">👇</span> Select Your Rooms
+              </div>
+              <div class="chat-room w-full h-2/3 relative mb-3">
+                <div
+                  id="chatroom1"
+                  class="flex flex-col absolute w-full h-full overflow-scroll"
+                >
+                  <button
+                    class="
+                      btnRoom
+                      flex
+                      items-center
+                      text-left
+                      p-2
+                      px-4
+                      pl-9
+                      mb-0.5
+                      font-semibold
+                      rounded-lg
+                      text-gray-300
+                      bg-srci
+                      hover:bg-srci
+                      w-full
+                    "
+                    id="general"
+                  >
+                    <span class="has text-2xl mr-1">#</span>Pbulic Chats
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- end -->
+          </div>
+        </div>
+        <!-- >>>>>>>>>>>>>>>>>>>>>>>>> -->
+        <!-- profile photos -->
+        <div class="profile-photo hidden bg-tel2 flex-auto text-gray-200 px-14">
+          <div class="flex justify-between py-3">
+            <h1 class="text-2xl">User Info</h1>
+            <span class="text-2xl cursor-pointer profile-close">x</span>
+          </div>
+          <form class="form relative">
+            <div class="field pb-4 -ml-2 border-b-8 border-tel1">
+              <div class="flex items-center">
+                <div
+                  class="w-24 h-24 rounded-full overflow-hidden relative selet"
+                >
+                  <img
+                    src="https://media.istockphoto.com/photos/portrait-of-a-handsome-young-man-smiling-outdoors-picture-id1191193172"
+                    id="img"
+                    class="w-24 h-24 object-cover"
+                  />
+                  <label
+                    for="chooseFile"
+                    class="
+                      w-full
+                      h-full
+                      bg-black
+                      opacity-40
+                      text-center
+                      hover:opacity-70
+                    "
+                    ><i class="fas fa-camera text-2xl hover:text-blue-600"></i
+                  ></label>
+                  <input
+                    type="file"
+                    id="chooseFile"
+                    name="chooseFile"
+                    class="hidden"
+                  />
+                </div>
+                <div class="user-info ml-6">
+                  <h1 class="capitalize user1 text-xl">Your Name</h1>
+                  <h2 class="text-blue-500">online</h2>
+                </div>
+              </div>
+            </div>
+            <div class="field-s absolute right-0 top-8 text-white hidden">
+              <input
+                type="submit"
+                value="Save"
+                class="px-2 py-1 bg-blue-500 cursor-pointer rounded-md"
+                id="uploadBtn"
+              />
+            </div>
+          </form>
+          <div class="other-info pt-2">
+            <ul>
+              <li class="cursor-pointer p-2 mb-1 hover:bg-srci rounded-md">
+                <i class="fas fa-exclamation-circle text-xl mr-3"></i>
+                Edit Profile
+              </li>
+              <li class="cursor-pointer p-2 mb-1 hover:bg-srci rounded-md">
+                <i class="fas fa-bell text-xl mr-3"></i>
+                Notifications
+              </li>
+            </ul>
+          </div>
+          <div class="-ml-2 pt-4 border-b-8 border-tel1"></div>
+        </div>
+        <!-- profile photos end-->
+        <!-- message form start -->
+        <div
+          class="
+            right-side-message
+            relative
+            bg-tel2
+            flex-auto
+            text-white
+            pl-0.5
+          "
+        >
+          <div
+            class="
+              flex
+              items-center
+              text-grayW-300
+              bg-tel1
+              border-b-2 border-gray-600
+            "
+          >
+            <h1 class="nav-tog mx-3 text-2xl cursor-pointer">
+              <i class="fas fa-bars"></i>
+            </h1>
+            <div class="right-head flex items-center justify-between w-full">
+              <h1
+                class="
+                  chatClass
+                  flex
+                  items-center
+                  font-bold
+                  shadow-md
+                  py-2
+                  px-3
+                  border-opacity-50
+                "
+              >
+                <span class="has text-2xl mr-1">#</span>Pbulic Chats
+              </h1>
+              <div class="user-right relative mx-3">
+                <div class="profile flex items-center cursor-pointer">
+                  <h1 class="capitalize user"></h1>
+                  <div class="ml-2 hidden">
+                    <img
+                      src="https://media.istockphoto.com/photos/portrait-of-a-handsome-young-man-smiling-outdoors-picture-id1191193172"
+                      id="imgP"
+                      class="
+                        w-10
+                        h-10
+                        object-cover
+                        rounded-full
+                        overflow-hidden
+                      "
+                    />
+                  </div>
+                  <i class="far fa-user-circle ml-2 text-2xl hidden"></i>
+                  <i class="fas fa-caret-down ml-2 text-2xl"></i>
+                </div>
+                <!-- logout -->
+                <div
+                  class="absolute top-10 right-0 z-50 bg-mess hidden proShow"
+                >
+                  <ul class="text-gray-200 font-semibold">
+                    <li
+                      class="px-3 py-2 mb-1 cursor-pointer hover:bg-srci"
+                      id="proF"
+                    >
+                      <div class="flex items-center">
+                        <i class="far fa-user-circle mr-3 text-xl"></i>
+                        Profile
+                      </div>
+                    </li>
+                    <li
+                      class="px-3 py-2 mb-1 cursor-pointer hover:bg-srci"
+                      id="logout1"
+                    >
+                      <div class="flex items-center">
+                        <i class="fas fa-sign-out-alt mr-3 text-xl"></i>
+                        Logout
+                      </div>
+                    </li>
+                  </ul>
+                  <!-- <h1 class="text-white px-3 py-2 cursor-pointer" id="logout1">
+                  Logout
+                </h1> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="px-3 pt-3 w-full h-h9">
+            <!-- chat list / window -->
+            <div class="chat-window w-full h-full relative">
+              <ul class="chat-list absolute w-full h-full overflow-scroll"></ul>
+            </div>
+
+            <!-- new chat form -->
+            <form class="new-chat w-full absolute bottom-0 left-0.5 mt-4">
+              <div class="input-group w-full flex items-center">
+                <input
+                  type="text"
+                  id="message"
+                  class="
+                    w-full
+                    form-control
+                    bg-tel1
+                    py-3
+                    px-4
+                    text-gray-100
+                    outline-none
+                  "
+                  placeholder="Write your message . . ."
+                  autocomplete="off"
+                  required
+                />
+                <div class="input-group-append">
+                  <button
+                    type="submit"
+                    value="send"
+                    class="
+                      btn
+                      py-3
+                      px-4
+                      font-semibold
+                      shadow-md
+                      text-white
+                      bg-blue-800
+                      hover:bg-blue-900
+                    "
+                  >
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- chat form end -->
+      </div>
+      <!-- Image uploading popUp -->
+      <div
+        class="
+          img-uploading
+          hidden
+          bg-grayC-900
+          opacity-50
+          w-full
+          h-full
+          z-10
+          absolute
+          top-0
+          left-0
+        "
+      ></div>
+      <h1
+        class="
+          hidden
+          imgUpl
+          text-2xl text-gray-200
+          absolute
+          z-20
+          top-1/2
+          left-1/2
+          transform
+          -translate-x-1/2 -translate-y-1/2
+        "
+      >
+        Uploading . . .
+      </h1>
+    </div>
+    <!-- chat html end-->
+
+    <!-- firabase script start -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.9.0/date_fns.min.js"
+      integrity="sha512-ToehgZGJmTS39fU8sfP9/f0h2Zo6OeXXKgpdEgzqUtPfE5By1K/ZkD8Jtp5PlfdaWfGVx+Jw5j10h63wSwM1HA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"
+    ></script>
+
+    <script defer src="../src/firebase/init-firebase.js"></script>
+    <!-- firbase script end -->
+    <script defer src="../src/auth.js"></script>
+    <script defer src="../src/chat.js"></script>
+    <script defer src="../src/creatRoom.js"></script>
+    <script defer src="../src/ui.js"></script>
+    <script defer src="../src/app.js"></script>
+    <script>
+      const body = document.querySelector("body");
+      // console.log(body);
+      // body.addEventListener("load", () => alert("hi"));
+      // location.reload();
+    </script>
+  </body>
+</html>

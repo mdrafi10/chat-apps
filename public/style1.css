@@ -1,0 +1,88 @@
+.chat-list::-webkit-scrollbar {
+  display: none;
+}
+.w-full::-webkit-scrollbar {
+  display: none;
+}
+form label {
+  position: absolute;
+  left: 0;
+  top: 7rem;
+  cursor: pointer;
+  visibility: hidden;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+}
+.selet:hover label {
+  visibility: visible;
+  position: absolute;
+  top: 3.5rem;
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+}
+/* Responsive Design */
+@media (min-width: 640px) {
+  .nav-tog {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .chatApp {
+    padding-top: 0;
+    width: 100%;
+  }
+  .main-chat-wrapper {
+    height: 100vh;
+  }
+  .left-side-room {
+    position: absolute;
+    left: -225px;
+    top: 0;
+    height: 100%;
+    z-index: 100;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+  }
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+  }
+  #popupForm {
+    z-index: 300;
+  }
+  .right-side-message {
+    padding-left: 0px;
+  }
+  .new-chat {
+    left: 0;
+  }
+}
+
+@media (max-width: 470px) {
+  #modal-login,
+  #modal-signup {
+    max-width: 90%;
+  }
+  .mbtn {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #login-email,
+  #signup-text {
+    margin-top: 0px;
+  }
+}
