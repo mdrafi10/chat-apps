@@ -10,7 +10,7 @@ auth.onAuthStateChanged((user) => {
 
       const data = db.collection("chats");
       setupChats(data);
-    }, 3500);
+    }, 4000);
 
     const chats = document.querySelector(".chatApp");
     const signupPage = document.querySelector(".signup-page");
