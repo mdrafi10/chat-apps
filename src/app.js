@@ -214,7 +214,9 @@ function setupProfileUser(user) {
     .catch((err) => {
       icon.style.display = "block";
       div.style.display = "none";
-      console.log(err.message);
+      if (err.message) {
+        console.log("user image not set");
+      }
     });
 }
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
