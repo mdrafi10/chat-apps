@@ -226,14 +226,6 @@ function setupProfileUser(user) {
 // profile toggle
 profileClose.addEventListener("click", () => {
   setTimeout(() => {
-    if (!window.location.hash) {
-      window.location = window.location + "#loaded";
-      window.location.reload();
-    }
-    console.log(window.location);
-    console.log("logut click");
-  }, 2);
-  setTimeout(() => {
     if (window.location.hash === "#loaded") {
       window.location.hash = "";
       window.location.href = window.location.href.replace("#", "");
