@@ -277,6 +277,7 @@ if (window.innerHeight < 670 && window.innerWidth > 640) {
 } else if (window.innerWidth < 640) {
   chats.style.paddingTop = "0px";
   chats.style.paddingBottom = "0px";
+  chatsWrap.style.height = "100%";
 } else {
   chats.style.paddingTop = "8rem";
   chatsWrap.style.height = "75%";
@@ -291,6 +292,7 @@ window.addEventListener("resize", () => {
   } else if (window.innerWidth < 640) {
     chats.style.paddingTop = "0px";
     chats.style.paddingBottom = "0px";
+    chatsWrap.style.height = "100%";
   } else {
     chats.style.paddingTop = "8rem";
     chatsWrap.style.height = "75%";
