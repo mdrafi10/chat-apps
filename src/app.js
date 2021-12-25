@@ -266,6 +266,15 @@ EditPhoto.addEventListener("click", () => {
   showP.style.transition = "0.4s";
 });
 
+ const chats = document.querySelector(".chatApp");
+  if (window.innerHeight < 670 && window.innerWidth > 640) {
+    chats.style.paddingTop = "20px";
+  } else if (window.innerWidth < 640) {
+    chats.style.paddingTop = "0px";
+  } else {
+    chats.style.paddingTop = "8rem";
+  }
+
 window.addEventListener("resize", () => {
   const chats = document.querySelector(".chatApp");
   if (window.innerHeight < 670 && window.innerWidth > 640) {
