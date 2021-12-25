@@ -266,22 +266,34 @@ EditPhoto.addEventListener("click", () => {
   showP.style.transition = "0.4s";
 });
 
- const chats = document.querySelector(".chatApp");
-  if (window.innerHeight < 670 && window.innerWidth > 640) {
-    chats.style.paddingTop = "20px";
-  } else if (window.innerWidth < 640) {
-    chats.style.paddingTop = "0px";
-  } else {
-    chats.style.paddingTop = "8rem";
-  }
+ 
+// Responsive design javaScript
+const chats = document.querySelector(".chatApp");
+const chatsWrap = document.querySelector(".main-chat-wrapper");
+if (window.innerHeight < 670 && window.innerWidth > 640) {
+  chats.style.paddingTop = "10px";
+  chats.style.paddingBottom = "10px";
+  chatsWrap.style.height = "100%";
+} else if (window.innerWidth < 640) {
+  chats.style.paddingTop = "0px";
+  chats.style.paddingBottom = "0px";
+} else {
+  chats.style.paddingTop = "8rem";
+  chatsWrap.style.height = "75%";
+}
 
 window.addEventListener("resize", () => {
   const chats = document.querySelector(".chatApp");
   if (window.innerHeight < 670 && window.innerWidth > 640) {
-    chats.style.paddingTop = "20px";
+    chats.style.paddingTop = "10px";
+    chats.style.paddingBottom = "10px";
+    chatsWrap.style.height = "100%";
   } else if (window.innerWidth < 640) {
     chats.style.paddingTop = "0px";
+    chats.style.paddingBottom = "0px";
   } else {
     chats.style.paddingTop = "8rem";
+    chatsWrap.style.height = "75%";
   }
 });
+
