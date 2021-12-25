@@ -31,6 +31,8 @@ const proF = document.querySelector("#proF");
 const sideTog = document.querySelector(".nav-tog");
 const leftSideRoom = document.querySelector(".left-side-room");
 const imgUploading = document.querySelector(".img-uploading");
+const EditPhoto = document.querySelector("#EditPhoto");
+const showP = document.querySelector(".show-p");
 
 // setupUser function form auth js
 function setupUser(user) {
@@ -256,3 +258,11 @@ imgUploading.addEventListener("click", () => {
   leftSideRoom.style.left = "-225px";
   imgUploading.classList.add("hidden");
 });
+
+// EditPhoto uploading toggle
+EditPhoto.addEventListener("click", () => {
+  showP.style.visibility = "visible";
+  showP.style.top = "3.5rem";
+  showP.style.transition = "0.4s";
+});
+
