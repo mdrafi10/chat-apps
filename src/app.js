@@ -48,9 +48,9 @@ function setupUser(user) {
           userId: doc.data().userId,
         };
         localStorage.setItem("random", JSON.stringify(colorGenerate));
-        userName.innerHTML = doc.data().fname;
+        userName.innerHTML = doc.data().fname ? doc.data().fname : localStorage.getItem("localName");
         userName.classList.add(doc.data().color);
-        userName1.innerHTML = doc.data().fname;
+        userName1.innerHTML = doc.data().fname ? doc.data().fname : localStorage.getItem("localName");
         userName1.classList.add(doc.data().color);
       });
   } else {
@@ -89,7 +89,7 @@ function setupChats(data) {
   const randm = JSON.parse(localStorage.getItem("random"));
   const colorRndom = randm ? randm : null;
 
-  const username = randm?.upName ? randm?.upName : "Rafi";
+  const username = randm?.upName ? randm?.upName : localStorage.getItem("localName");
   const imgURL = localStorage.getItem("imgURL")
     ? localStorage.getItem("imgURL")
     : "";
