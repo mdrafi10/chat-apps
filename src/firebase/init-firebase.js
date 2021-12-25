@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyCUu54jnm-iNbShFcS7EzFp-yrtTJZSn4o",
-  authDomain: "chat-app-d5a43.firebaseapp.com",
-  projectId: "chat-app-d5a43",
-  storageBucket: "chat-app-d5a43.appspot.com",
-  messagingSenderId: "251661023616",
-  appId: "1:251661023616:web:fca32cd208c35b2c60a965",
+  apiKey: "AIzaSyDsttjSHcu2aQnGu3lnciJBfNJwpwsePQo",
+  authDomain: "chat-apps-df9f8.firebaseapp.com",
+  projectId: "chat-apps-df9f8",
+  storageBucket: "chat-apps-df9f8.appspot.com",
+  messagingSenderId: "842606909948",
+  appId: "1:842606909948:web:3962c40542317bd5dc7a79"
 };
 
 // Initialize Firebase
