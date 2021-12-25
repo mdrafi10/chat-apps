@@ -18,6 +18,12 @@ auth.onAuthStateChanged((user) => {
     chats.style.display = "block";
     signupPage.classList.add("hidden");
     loginPage.classList.add("hidden");
+    setTimeout(() => {
+      if (!window.location.hash) {
+        window.location = window.location + "#loaded";
+        window.location.reload();
+      }
+    }, 3000);
   } else {
     setupUser();
     setTimeout(() => {
@@ -25,7 +31,8 @@ auth.onAuthStateChanged((user) => {
         window.location.hash = "";
         window.location.href = window.location.href.replace("#", "");
       }
-    }, 20);
+      console.log("user out");
+    }, 2000);
     const chats = document.querySelector(".chatApp");
     const loginPage = document.querySelector(".login-page");
     chats.style.display = "none";
@@ -64,7 +71,6 @@ signupForm.addEventListener("submit", (e) => {
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((cred) => {
-      // console.log(cred);
       return db.collection("user").doc(cred.user.uid).set({
         fname: signupForm["signup-text"].value,
         color: getColor,
@@ -81,13 +87,17 @@ logout.addEventListener("click", (e) => {
   e.preventDefault();
   localStorage.clear();
   setTimeout(() => {
+    if (window.location.hash === "#loaded") {
+      window.location.hash = "";
+      window.location.href = window.location.href.replace("#", "");
+    }
+  }, 1000);
+  setTimeout(() => {
     if (!window.location.hash) {
       window.location = window.location + "#loaded";
       window.location.reload();
     }
-    console.log(window.location);
-    console.log("logut click");
-  }, 10);
+  }, 1500);
   auth.signOut();
 });
 
