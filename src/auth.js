@@ -63,6 +63,8 @@ signupForm.addEventListener("submit", (e) => {
   ];
   const rndm = Math.floor(Math.random() * color.length);
   const getColor = color[rndm];
+  const localName = signupForm["signup-text"].value;
+  localStorage.setItem("localName", localName);
   //   get user info
   const email = signupForm["signup-email"].value;
   const password = signupForm["signup-password"].value;
